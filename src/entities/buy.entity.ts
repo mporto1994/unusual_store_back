@@ -1,0 +1,33 @@
+import { BADQUERY } from "dns";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryColumn } from "typeorm";
+import { uuid } from "uuidv4";
+import { Product } from "./product.entity";
+import { User } from "./user.entity";
+
+
+
+@Entity()
+
+export class Buy{
+    @PrimaryColumn("uuid")
+    readonly id: string;
+    @ManyToOne((type) => User, (user) => user.buys)
+    user: User;
+
+
+    @ManyToMany((type)=> Product, {
+        eager: true,
+    })
+
+    @JoinTable()
+    products: Product[]
+
+    @Column("float")
+    total:number
+
+    constructor(){
+        if(!this.id) {
+            this.id = uuid()
+        }
+    }
+}
