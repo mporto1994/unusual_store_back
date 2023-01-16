@@ -1,6 +1,6 @@
 import { BADQUERY } from "dns";
 import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryColumn } from "typeorm";
-import { uuid } from "uuidv4";
+import {v4 as uuid} from "uuid"
 import { Product } from "./product.entity";
 import { User } from "./user.entity";
 

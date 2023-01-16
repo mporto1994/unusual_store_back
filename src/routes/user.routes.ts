@@ -15,7 +15,7 @@ export const userRoutes = () => {
     routes.post("/login", userLoginController)
     
     routes.get("/me", authUserMiddleware, userDashboardController)
-    routes.get("/",authUserMiddleware, userListController)
+    routes.get("/", userListController)
     
     routes.delete("/me", authUserMiddleware, userDeleteSelfController)
     routes.patch("/me/updatePassword", authUserMiddleware, userUpdatePasswordController)
